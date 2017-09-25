@@ -31,3 +31,24 @@ output: html_document
 - Knowledge of transfer is inhibited  
 - Results are difficult to replicate or reproduce  
 - Complicated analyses cannot be trusted  
+
+### What Problem Does Reproducibility Solve?  
+What we get  
+- Transparency  
+- Data Availability  
+- Software/Methods Availability  
+- Improved Transfer of Knowledge  
+
+What we do NOT get  
+- Validity/Correctness of the analysis  
+
+An analysis can be reproducible and still be wrong  
+  
+We want to know "can we trust this analysis?"  
+  
+Does requiring reproducibility deter bad analysis?
+
+### Problems with Reproducibility  
+The premise of reproducible research is that with data/code available, people can check each other and the whole system is self-correcting  
+- Addresses the most "downstream" aspect of the research process - post-publication  
+- Assumes everyone plays by the same rules and wants to achieve the same goals (i.e., scientific discovery)
