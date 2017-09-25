@@ -76,3 +76,60 @@ TODO: Add description/summary
 - Some methods may be standard for a given field, but others are often applied ad hoc  
 -We should apply thoroughly studied (via statistical research), mutually agreed upon methods to analyze data whenever possible  
 - There should be evidence to justify the application of a given method
+- Create analytic pipelines from evidence-based components - standardize it  
+- A deterministic Statistical Machine [http://goo.gl/Qvlhuv](http://goo.gl/Qvlhuv)  
+- Once an evidence-based analytic pipeline is established, we shouldn't mess with it  
+- Analysis with a "transparent box"  
+- Reduce the "researcher degrees of freedom"  
+- Analogous to a pre-specified clinical trial protocol  
+
+
+### Deterministic Statistical Machine
+TODO: add image/description
+
+
+### Case Study: Estimating Acute Effects of Ambient Air Pollution Exposure
+- Acute/short-term effects typically estimated via panel studies or time series studies  
+- Work originated in late 1970s early 1980s  
+- Key question: "Are short-term changes in pollution associated with short-term   changes in a population health outcome?"  
+- Studies usually conducted at community level  
+- Long history of statistical research investigating proper methods of analysis  
+  
+- Can we encode everything that we have found in statistical/epidemiological research into a single package?  
+- Time series studies do not have a huge range of variation; typically involves similar types of data and similar questions  
+- We can create a deterministic statistical machine for this area?  
+
+###  DSM Modules for Time Series Studies of Air Pollution and Health
+1. Check for outliers, high leverage, overdispersion  
+2. Fill in missing data? NO!  
+3. Model selection: Estimate degrees of freedom to adjust for unmeasured confounders  
+    - Other aspects of model not as critical 
+4. Multiple lag analysis  
+5. Sensitivity analysis wrt  
+    - Unmeasured confounder adjustment  
+    - Influential points  
+    
+### Where to Go from Here?  
+- One DSM is not enough, we need many!  
+- Different problems warrant different approaches and expertise  
+- A curated library of machines providing state-of-the art analysis pipelines  
+- A CRAN/CPAN/CTAN/... for data analysis  
+- Or a “Cochrane Collaboration” for data analysis  
+
+### A Model: Cochrane Collaboration  
+TODO: add image/description
+
+
+### A Curated Library of Data Analysis  
+- Provide packages that encode data analysis pipelines for given problems, technologies, questions  
+- Curated by experts knowledgeable in the field  
+- Documentation/references given supporting each module in the pipeline  
+- Changes introduced after passing relevant benchmarks/unit tests  
+
+### Summary  
+- Reproducible research is important, but does not necessarily solve the critical question of whether a data analysis is trustworthy  
+- Reproducible research focuses on the most "downstream" aspect of research   dissemination  
+- Evidence-based data analysis would provide standardized, best practices for given scientific  
+areas and questions  
+- Gives reviewers an important tool without dramatically increasing the burden on them  
+- More effort should be put into improving the quality of "upstream" aspects of scientific research  
