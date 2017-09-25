@@ -60,3 +60,17 @@ Notice here that
 - Add changes in small chunks (don't just do one massive commit)  
 - Track/tag snapshots; revert to old versions  
 - Sofware like GitHub/BitBucket/SourceForge make it easy to publish results
+
+### DO Keep Track of Your Software Environment
+- If you work on a complex project involving may tools/datasets, the software and computing environment can be critical for reproducing your analysis  
+- **Computer architecture**: CPU (Inte, AMD, ARM), GPUs  
+- **Operating system**: Windows, Mac OS, Linux/Unix
+- **Sofware toolchain**: compilers, interpreters, command shell, programming languages (C, Perl, Python, etc.), database backends, data analysis software  
+- **Supporting software/infrastructure**: Libraries, R packages, dependencies  
+- **External dependencies**: Web sites, data repos, remote databases, sofwtare repos  
+- **Version numbers**: Ideally, for everything (if available)
+
+```{r}
+sessionInfo()
+```
+
