@@ -74,3 +74,31 @@ Notice here that
 sessionInfo()
 ```
 
+### DON'T: Save Output
+- Avoid saving data analysis output (tables, figures, summaries, rocessed data, etc.) except perhaps temporarily for efficiency purposes  
+- If a stray output file cannot be easily connected with the means by which it was created, then it is not reproducible  
+- Save the data + code that generated the output rather than the output itself  
+- Intermediate files are okay as long as there is clear documentation of how they were created.  
+
+### DO: Set Your Seed
+- Random number generators generate pseudo-random numbers based on an initial seed (usually a number or set of numbers)  
+    - In R you can use the *set.seed()* function to set the speed and specify the random number generator to use  
+- Setting the seed allows for the stream of random numbers to be 
+- Whenever you generate random numbers for a non-trivial purpose, **always set the seed**
+
+### DO: Think About the Entire Pipeline  
+- Data analysis is a lengthy process; it is not just tables/figures/reports  
+- Raw data -> processed data -> analysis -> report  
+- How you got the end is just as important as the end itself  
+- The more of the data analysis pipeline you can make reproducible, the better for everyone  
+
+### Summary
+- Are we doing good science?  
+- Was any part of this analysis done by hand?  
+    - If so, are those parts precisely documented?  
+    - Does the documentation match reality?  
+- Have we taught a computer to do as much as possible (i.e., coded)?  
+- Are we using a version control system?  
+- Have we documented our sofware environment?  
+- Have we saved any output that we cannot reconstruct from original data + code?  
+- How far back in the data analysis pipeline can we go before our results are no longer (automatically) reproducible?
