@@ -52,3 +52,27 @@ Does requiring reproducibility deter bad analysis?
 The premise of reproducible research is that with data/code available, people can check each other and the whole system is self-correcting  
 - Addresses the most "downstream" aspect of the research process - post-publication  
 - Assumes everyone plays by the same rules and wants to achieve the same goals (i.e., scientific discovery)
+
+### Scientific Dissemination Process
+TODO: Add description/summary
+
+### Who Reproduces Research?  
+- For reproducibility to be effective as a means to check validity, someone needs to do something  
+    - Re-run the analysis; check results match  
+    - Check the code for bugs/errors  
+    - Try alternate approaches; check sensitivity  
+- The need for someone to do something is inherited from traditional notion of replication  
+- Who is "someone" and what are their goals?  
+
+### The Story So Far  
+- Reproducibility brings transparency (wrt code + data) and increased transfer of knowledge  
+- A lot of discussion about how to get people to share data  
+- Key question of "can we trust this analysis?" is not addressed by reproducibility  
+- Reproducibility addresses potential problems long after they've occured ("downstream")  
+- Secondary analyses are inevitably colored by the interests/motivations of others 
+
+### Evidence-based Data Analysis  
+- Most data analyses involve stringing together many different tools and methods  
+- Some methods may be standard for a given field, but others are often applied ad hoc  
+-We should apply thoroughly studied (via statistical research), mutually agreed upon methods to analyze data whenever possible  
+- There should be evidence to justify the application of a given method
