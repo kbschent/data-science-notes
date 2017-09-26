@@ -1,0 +1,104 @@
+---
+title: "Caching Computations"
+output:
+  html_document:
+    df_print: paged
+---
+
+### Literate (Statistical Programming)  
+- An article is a stream of **text** and **code**  
+- Analysis code is divided into text and code "chunks"  
+- Each code chunk loads data and computes results  
+- Presentation code formats results (tables, figures, etc.)  
+- Article text explains what is going on  
+- Literate programs can be **weaved** to produced human-readable documents and **tangled** to produce machine-readable documents  
+- Literate programming is a general concept that requires:
+    1. A documentation language (human readable)  
+    2. A programming language (machine readable)  
+- Sweave uses LaTeX and R as the documentation and programming languages  
+- Sweave was developed by Friedrich Leisch (member of the R Core) and is maintained by R core  
+- Main website: [http://www.statistik.lmu.de/leisch/Sweave](http://www.statistik.lmu.de/leisch/Sweave)  
+- Alternatives to LaTeX/R exist, such as HTML/R (package R2HTML) and ODF/R (package odfWeave)  
+
+### The ```cacher``` package for R  
+- Add-on package for R  
+- Evaluates code written in files and stores intermediate results in a key-value database  
+- R expressions are given SHA-1 hash values so that changes can be tracked and code reevaluated if necessary  
+- "Cacher packages" can be built for distribution  
+- Others can "clone" an analysis and evaluate subsets of code or inspect data object  
+
+*Journal of Statistical Software, 26 (7), 1-24
+
+### Using ```cacher``` as an Author  
+1. Parse the R source file; Create the necessary cache directories and subdirectories  
+2. Cycle through each expression in the source file:  
+    - If an expression has never been evaluated, evaluate it and store any resulting R objects in the cache database  
+    - If a cached result exists, lazy-load the results from the cache database and move to the next expression  
+    - If an expression does not create any R objects (i.e., there is nothign to cache), add the expression to the list of expressions where evaluation needs to be forced  
+    - Write out metadata for this expression to the metadata file.  
+- The ```cachepackage``` function creates a cacher package storing:
+    - Source file  
+    - Cached data objects  
+    - Metadata  
+- Package file is zipped and can be distributed  
+- Readers can unzip the file and immediately investigate its contents via ```cacher``` package  
+
+### Using ```cacher``` as a Reader  
+- A journal article says...  
+    - "...the code and the data for this analysis can be found in the cacher package 092dcc7dda4b93e42f23e038a60e1d44bec7b3f."
+    
+```
+>  library(cacher)  
+>  clonecache(id = "092dcc7dda4b93e42f23e038a60e1d44bec7b3f")  
+>  clonecache(id = "092d") ## Same as above  
+created cache directory '.cache'  
+
+>  showfiles()  
+[1]  "top20.R"  
+>  sourcefile("top20.R")
+```
+
+### Cloning an Analysis  
+- Local directories are created  
+- Source code files and metadata are downloaded  
+- Data objects are *not* downloaded by default  
+- References to data objects are loaded and corresponding data can be lazy-loaded on demand  
+### Running Code  
+- The runcode function executes code in the source file  
+- By default, exressions that result in an object being created are *not* run and the resulting objects are lazy-loaded into the workspace  
+- Expressions not resulting in objects are evaluated  
+
+### Checking Code and Objects  
+- The ```checkcode``` function evaluates all expressions from scratch (no lazy-loading)  
+- Results of evaluation are checked against stored results to see if the results are the same as what the author calculated  
+    - Setting RNG seeds is critical for this to work  
+- The integrity of data objects can be verified with the ```checkobjects``` function to check or possible corruption of data (i.e., in transit)  
+
+### Inspecting Data Objects  
+```
+>  loadcache()
+
+>  ls()
+[1] "cities"    "classes"   "data"  "effect"
+[5] "estimates" "stderr"    "vars"
+
+>  cities
+/ transferring cache db file b8fd49bcf1d48cd06...
+ [1] "la"   "ny"    "chic"  "dlft"  "hous"  "phoe"
+ [7] "staa" "sand"  "miam"  "det"   "seat"  "sanb"
+[13] "sanj" "minn"  "rive"  "phil"  "atla"  "oakl"
+[19] "denv" "clev"
+
+>  effect
+/ transferring cache db file 584115c69e5e2a4ae5...
+[1] 0.0002313219
+
+>  stderr
+/ transferring cache db file 81b6dc23736f3d72c6...
+[1] 0.000052457
+```
+
+### ```cacher``` Summary
+- The ```cacher``` package can be used by authors to create cache packages from data analyses for distribution  
+- Readers can use the ```cacher``` package to inspect others' data analyses by examining cached computations  
+- ```cacher``` is mindful of readers' resources and efficiently loads only those data objects that are needed
